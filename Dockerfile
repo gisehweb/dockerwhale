@@ -1,6 +1,5 @@
-FROM node:12-alpine
-RUN apk add --no-cache python g++ make
-WORKDIR /app
-COPY . .
-RUN yarn install --production
-CMD ["node", "src/index.js"]
+FROM docker/whalesay:latest
+
+RUN apt-get -y update && apt-get install -y fortunes
+
+CMD /usr/games/fortune -a | cowsay
